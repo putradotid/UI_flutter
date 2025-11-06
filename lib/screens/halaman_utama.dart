@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive/widgets/pencarian.dart';
+import 'package:responsive/widgets/promo.dart';
 import 'package:responsive/widgets/selamat_datang.dart';
 
 class HalamanUtama extends StatelessWidget {
@@ -14,6 +15,7 @@ class HalamanUtama extends StatelessWidget {
           children: [
             SelamatDatang(),
             Pencarian(),
+            Promo(),
           ],
         ),
       ),
