@@ -10,7 +10,14 @@ class SelamatDatang extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.amber.shade200,
-        borderRadius: BorderRadius.circular(16)
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade400,
+            blurRadius: 4,
+            offset: Offset(2, 2)
+          )
+        ]
       ),
       child: Row(
         children: [
@@ -24,6 +31,14 @@ class SelamatDatang extends StatelessWidget {
                 image: DecorationImage(image: NetworkImage("https://picsum.photos/201"))
               ),
             ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Selamat Datang"),
+              Text("User")
+            ],
           )
         ],
       ),

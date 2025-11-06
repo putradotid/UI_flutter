@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive/widgets/pencarian.dart';
 import 'package:responsive/widgets/selamat_datang.dart';
 
 class HalamanUtama extends StatelessWidget {
@@ -12,7 +13,7 @@ class HalamanUtama extends StatelessWidget {
         child: ListView(
           children: [
             SelamatDatang(),
-            Text("Ini halaman utama"),
+            Pencarian(),
           ],
         ),
       ),
