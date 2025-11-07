@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive/screens/halaman_keranjang.dart';
 import 'screens/halaman_utama.dart';
 
 void main(List<String> args) {
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HalamanUtama(),
+      home: HalamanKeranjang(),
     );
   }
 }
