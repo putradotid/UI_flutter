@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive/data_source.dart';
+import 'package:responsive/screens/halaman_keranjang.dart';
 import 'package:responsive/widgets/pencarian.dart';
 import 'package:responsive/widgets/promo.dart';
 import 'package:responsive/widgets/selamat_datang.dart';
@@ -126,7 +127,13 @@ class HalamanUtama extends StatelessWidget {
                       ),
                       Text(menuList[index]["harga"].toString(), style: TextStyle(fontSize: 12),),
                       IconButton(onPressed: () {
-                        // aksi ketika tombol beli ditekan
+                        daftarBelanjaList.add({
+                          "namamenu": menuList[index]["namamenu"],
+                          "harga": menuList[index]["harga"],
+                          "gambar": menuList[index]["gambar"],
+                          "jmlitem": 1,
+                        });
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => HalamanKeranjang(),));
                       }, icon: Icon(
                         Icons.shopping_cart_checkout),
                         color: Colors.red,
@@ -137,6 +144,16 @@ class HalamanUtama extends StatelessWidget {
             ),
           ),
         ),
+        actions: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(onPressed: () {
+                Navigator.pop(context);
+              }, child: Text("Close"))
+            ],
+          )
+        ],
       ),
     );
   }
