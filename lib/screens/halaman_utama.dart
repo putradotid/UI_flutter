@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive/data_source.dart';
+import 'package:responsive/screens/halaman_detail.dart';
 import 'package:responsive/screens/halaman_keranjang.dart';
 import 'package:responsive/widgets/pencarian.dart';
 import 'package:responsive/widgets/promo.dart';
@@ -117,12 +118,17 @@ class HalamanUtama extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       FittedBox(child: Text(menuList[index]["namamenu"], style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),)),
-                      Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(image: NetworkImage(menuList[index]["gambar"]))
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => HalamanDetail(namamenu: menuList[index]["namamenu"], label1: menuList[index]["label1"], warnalabel1: menuList[index]["warnalabel1"], label2: menuList[index]["label2"], warnalabel2: menuList[index]["warnalabel2"], deskripsi: menuList[index]["deskripsi"], harga: menuList[index]["harga"], gambar: menuList[index]["gambar"]),));
+                        },
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(image: NetworkImage(menuList[index]["gambar"]))
+                          ),
                         ),
                       ),
                       Text(menuList[index]["harga"].toString(), style: TextStyle(fontSize: 12),),

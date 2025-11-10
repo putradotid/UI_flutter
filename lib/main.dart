@@ -11,6 +11,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // Menggunakan tema warna merah untuk tombol aplikasi (optional)
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.red.shade400,
+          foregroundColor: Colors.white,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: WidgetStatePropertyAll(Colors.red.shade400),
+            foregroundColor: WidgetStatePropertyAll(Colors.white),
+          )
+        )
+      ),
       debugShowCheckedModeBanner: false,
       home: HalamanUtama(),
     );
