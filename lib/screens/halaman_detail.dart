@@ -52,6 +52,9 @@ class _HalamanDetailState extends State<HalamanDetail> {
                   "gambar": widget.gambar,
                   "jmlitem": 1,
                 });
+
+                setState(() {terlarisList.add(widget.namamenu);});
+
                 Navigator.push(context, MaterialPageRoute(builder: (context) => HalamanKeranjang(),));
               },
               child: Container(

@@ -2,12 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:responsive/data_source.dart';
 import 'package:responsive/screens/halaman_detail.dart';
 import 'package:responsive/screens/halaman_keranjang.dart';
+import 'package:responsive/screens/halaman_profile.dart';
 import 'package:responsive/widgets/pencarian.dart';
 import 'package:responsive/widgets/promo.dart';
 import 'package:responsive/widgets/selamat_datang.dart';
+import 'package:responsive/widgets/terlaris.dart';
 
-class HalamanUtama extends StatelessWidget {
+class HalamanUtama extends StatefulWidget {
   const HalamanUtama({super.key});
+
+  @override
+  State<HalamanUtama> createState() => _HalamanUtamaState();
+}
+
+class _HalamanUtamaState extends State<HalamanUtama> {
+  int posisiSekarang = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -77,13 +86,48 @@ class HalamanUtama extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
+            Terlaris(),
           ],
         ),
       ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: posisiSekarang,
+        onTap: (value) {
+          setState(() {
+            posisiSekarang = value;
+          });
+
+          switch(value) {
+            case 0:
+              Navigator.push(context, MaterialPageRoute(builder: (context) => HalamanProfile(),));
+              break;
+            case 1:
+              // Aksi ketika ikon Home ditekan
+              break;
+            case 2:
+              Navigator.push(context, MaterialPageRoute(builder: (context) => HalamanKeranjang(),));
+              break;
+          }
+        },
+        items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person, color: Colors.red.shade400,), 
+          label: "Profile"
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home, color: Colors.red.shade400,), 
+          label: "Home"
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.shopping_cart, color: Colors.red.shade400,), 
+          label: "Cart"
+        ),
+      ]),
     );
   }
-  
+
   // membuat pop up menu
   void tampilkanDaftarMenu(
     BuildContext context,
@@ -139,6 +183,12 @@ class HalamanUtama extends StatelessWidget {
                           "gambar": menuList[index]["gambar"],
                           "jmlitem": 1,
                         });
+
+                        setState(() {
+                        terlarisList.add(menuList[index]["namamenu"],);
+                        });
+
+
                         Navigator.push(context, MaterialPageRoute(builder: (context) => HalamanKeranjang(),));
                       }, icon: Icon(
                         Icons.shopping_cart_checkout),
